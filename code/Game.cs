@@ -18,6 +18,8 @@ namespace Sandbox
 	/// You can use this to create things like HUDs and declare which player class
 	/// to use for spawned players.
 	/// </summary>
+	/// 
+	[Library("SnortDoors", Title = "SnortDoors")]
 	public partial class MyGame : Sandbox.Game
 	{
 		public MyGame()
@@ -33,7 +35,7 @@ namespace Sandbox
 
 			// Create a pawn for this client to play with
 			var pawn = new Pawn();
-			client.Pawn = pawn;
+			client.Pawn = new SandboxPlayer();
 
 			// Get all of the spawnpoints
 			var spawnpoints = Entity.All.OfType<SpawnPoint>();
@@ -48,6 +50,7 @@ namespace Sandbox
 				tx.Position = tx.Position + Vector3.Up * 50.0f; // raise it up
 				pawn.Transform = tx;
 			}
+
 		}
 	}
 

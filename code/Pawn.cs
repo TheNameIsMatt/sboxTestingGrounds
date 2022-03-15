@@ -16,11 +16,12 @@ namespace Sandbox
 			//
 			// Use a watermelon model
 			//
-			SetModel( "models/sbox_props/watermelon/watermelon.vmdl" );
+			SetModel( "models/citizen/citizen.vmdl" );
 
 			EnableDrawing = true;
 			EnableHideInFirstPerson = true;
 			EnableShadowInFirstPerson = true;
+
 		}
 
 		/// <summary>
@@ -28,6 +29,7 @@ namespace Sandbox
 		/// </summary>
 		public override void Simulate( Client cl )
 		{
+			
 			base.Simulate( cl );
 
 			Rotation = Input.Rotation;
