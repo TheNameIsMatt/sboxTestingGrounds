@@ -1,18 +1,12 @@
-# Build and Release Folders
-bin-debug/
-bin-release/
-[Oo]bj/
-[Bb]in/
+code/*.csproj
+code/obj
+code/Properties/launchSettings.json
+.intermediate
+tools_asset_info.bin
+instagib.zip
 
-# Other files and folders
-.settings/
+maps/
+textures/world/
+materials/world/
 
-# Executables
-*.swf
-*.air
-*.ipa
-*.apk
-
-# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
-# should NOT be excluded as they contain compiler settings and other important
-# information for Eclipse / Flash Builder.
+.vs/
