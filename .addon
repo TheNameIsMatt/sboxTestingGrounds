@@ -1,0 +1,13 @@
+{
+  "Title": "Testing Grounds",
+  "Type": "game",
+  "Org": "local",
+  "Ident": "testing_grounds",
+  "Schema": 1,
+  "HasAssets": true,
+  "AssetsPath": "/models/",
+  "ResourcePaths": null,
+  "HasCode": true,
+  "CodePath": "/code/",
+  "RootNamespace": "Sandbox"
+}
