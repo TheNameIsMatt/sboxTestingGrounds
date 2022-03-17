@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Sandbox
 {
-	partial class BaseTGWeapon : BaseWeapon
+	partial class BaseTGWeapon : BaseWeapon, IRespawnableEntity
 	{
 
 		public virtual SandboxPlayer.AmmoType AmmoType => SandboxPlayer.AmmoType.Pistol;

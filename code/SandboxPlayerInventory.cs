@@ -57,5 +57,6 @@ namespace Sandbox
 			ItemRespawn.Taken( ent );
 			return base.Add( ent, makeActive );
 		}
+
 	}
 }
