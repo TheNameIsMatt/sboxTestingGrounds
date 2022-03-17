@@ -34,8 +34,10 @@ namespace Sandbox
 			base.ClientJoined( client );
 
 			// Create a pawn for this client to play with
-			var pawn = new Pawn();
-			client.Pawn = new SandboxPlayer();
+			var player = new SandboxPlayer();
+			player.Respawn();
+
+			client.Pawn = player;
 
 			// Get all of the spawnpoints
 			var spawnpoints = Entity.All.OfType<SpawnPoint>();
@@ -48,7 +50,7 @@ namespace Sandbox
 			{
 				var tx = randomSpawnPoint.Transform;
 				tx.Position = tx.Position + Vector3.Up * 50.0f; // raise it up
-				pawn.Transform = tx;
+				player.Transform = tx;
 			}
 
 		}
