@@ -19,7 +19,9 @@ namespace Sandbox.UI
 			}
 			Log.Info( "HUD Intialised" );
 
-			RootPanel.SetTemplate( "/UI/GameBar.html" );
+			//RootPanel.SetTemplate( "/UI/GameBar.html" );
+
+			RootPanel.AddChild<GameBar>();
 			RootPanel.AddChild<Ammo>();
 			
 		}

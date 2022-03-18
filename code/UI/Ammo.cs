@@ -4,15 +4,12 @@ using Sandbox.UI.Construct;
 
 public class Ammo : Panel
 {
-	public Label Word;
-	public Button btn;
+	public Label Word { get; set; }
+	public Button btn { get; set; }
 
-	[Library]
+	
 	public Ammo()
 	{
-		StyleSheet.Load( "/UI/Ammo.scss" );
-		Word = Add.Label( "Sandbox", "ammo" );
-		btn = Add.Button( "Button", "fire" );
 
 
 	}
