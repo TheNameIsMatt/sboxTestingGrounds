@@ -24,6 +24,9 @@ namespace Sandbox
 
 		}
 
+		//it's very important that in your Pawn's BuildInput you also call ActiveChild?.BuildInput( input ); and that you do it before base.BuildInput( input ); because BuildInput on entities is NOT called by default.
+		//It is called for a player's Pawn by default in the base Game class, you need to pass it down from there.
+
 		/// <summary>
 		/// Called every tick, clientside and serverside.
 		/// </summary>

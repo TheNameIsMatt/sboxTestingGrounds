@@ -1,6 +1,8 @@
 ﻿
 using Sandbox;
 using Sandbox.UI.Construct;
+using Sandbox.UI;
+
 using System;
 using System.IO;
 using System.Linq;
@@ -24,6 +26,10 @@ namespace Sandbox
 	{
 		public MyGame()
 		{
+			if ( IsServer )
+			{
+				new TanksHUD();
+			}
 		}
 
 		/// <summary>
@@ -36,6 +42,7 @@ namespace Sandbox
 			// Create a pawn for this client to play with
 			var player = new SandboxPlayer();
 			player.Respawn();
+			
 
 			client.Pawn = player;
 
@@ -54,6 +61,8 @@ namespace Sandbox
 			}
 
 		}
+
+		
 	}
 
 }
