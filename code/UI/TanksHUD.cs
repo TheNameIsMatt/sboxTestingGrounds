@@ -24,6 +24,7 @@ namespace Sandbox.UI
 			RootPanel.AddChild<GameBar>();
 			RootPanel.AddChild<Ammo>();
 			
+			
 		}
 	}
 }

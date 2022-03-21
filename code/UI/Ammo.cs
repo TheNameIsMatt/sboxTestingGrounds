@@ -12,6 +12,7 @@ public class Ammo : Panel
 	{
 
 
+
 	}
 
 	public override void Tick()

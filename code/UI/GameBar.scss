@@ -1,24 +1,36 @@
 ﻿// Gamebar is a C# class so it doesn't require the dot at the start
+@import "Utilities.scss";
 
 GameBar {
-    position: absolute;
-    width: 100%;
-    height: 10%;
-    background-color: lightblue;
+    //Pointer-events: all; allows you to bring the cursor up for the user.
+    // pointer-events: all;
 
+    
+    width: 90%;
+    height: 12.5%;
+    background-color: #F3A712;
+    margin: 10px 10px;
+    border: 8.5px solid #E4572E;
+    border-radius: 5px;
+    padding-top: 10px 0;
     // .Header is a class that is created in the GameBar.html, this means it should be referenced with a . at the start
     .Header {
-        font-size: 200px;
-        color: green;
+        font-size: 50px;
+        align-self: auto;
+        display: flex;
+        padding: 100px;
     }
-
     // Label is a C# class so it doesn't need the . at the start
-    label {
-        color:red;
+    // Custom class created in the HTML so needs dot .
+    Label {
     }
 
-    // Custom class created in the HTML so needs dot .
-    .CustomButton{
+    Button {
+        //padding: 20px;
+    }
 
+    .CustomLabel {
+        color: white;
+        padding: 20px;
     }
 }

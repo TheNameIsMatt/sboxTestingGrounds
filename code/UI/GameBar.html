@@ -1,8 +1,19 @@
 ﻿<link rel="stylesheet" href="GameBar.scss">
 
-<div>
+<div class="grid container parentSpaceMaker">
     <!-- The @ref is what allows these elements to be picked up by the GameBar.cs class-->
     <!--The names of the ref need to be the same as the properties defined in the Gamebar.cs Class-->
-    <label @ref="Header" class="Header">Hey</label>
-    <button @ref="btn" class="CustomButton">Hemlo</button> 
+    <div>
+        <label @ref="Header" class="Header">Hey</label>
+        
+    </div>
+    <div >
+        <button @ref="btn" class="UIOutline"> Hemlo</button>
+    </div>
+    <div >
+        <label class="UIOutline">Stuff here</label>
+    </div>
+    <div >
+        <label class="UIOutline">more stuff here</label>
+    </div>
 </div>

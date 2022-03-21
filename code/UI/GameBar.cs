@@ -24,8 +24,9 @@ namespace Sandbox.UI
 		public override void Tick()
 		{
 			base.Tick();
-			btn.Text = "BEWTON";
-			Header.Text = "Poop";
+			//btn.Text = "Button";
+			Header.Text = "Tanks!";
+			Parent.SetClass( "buildmenuopen", Player.Local?.Input.Down( InputButton.Menu ) ?? false );
 		}
 	}
 }
