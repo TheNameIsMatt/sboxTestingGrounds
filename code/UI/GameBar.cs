@@ -10,6 +10,8 @@ namespace Sandbox.UI
 	[UseTemplate]
 	public class GameBar : Panel
 	{
+		private TimeSince timeSincePointerActivated;
+
 		//The names of these properties MUST MATCH the names of the @ref classes in the HTML file
 		//The GET AND SET IS 100% NECESSARY OTHERWISE IT WILL NOT BIND TO THE HTML CORRECTLY.
 		public Label Header { get; set; }
@@ -24,9 +26,32 @@ namespace Sandbox.UI
 		public override void Tick()
 		{
 			base.Tick();
+
+			timeSincePointerActivated += Time.Delta;
+
+
 			//btn.Text = "Button";
 			Header.Text = "Tanks!";
-			Parent.SetClass( "buildmenuopen", Player.Local?.Input.Down( InputButton.Menu ) ?? false );
+			
+			if (Input.Pressed(InputButton.Flashlight) && timeSincePointerActivated > 0.2f )
+			{
+				TogglePointer();
+				timeSincePointerActivated = 0f;
+			}
+			
+		}
+
+		public void TogglePointer()
+		{
+
+			if ( HasClass( "enablePointer" )) 
+			{
+				RemoveClass( "enablePointer" );
+			}
+			else
+			{
+				AddClass( "enablePointer" );
+			}
 		}
 	}
 }

@@ -3,14 +3,17 @@
 
 GameBar {
     //Pointer-events: all; allows you to bring the cursor up for the user.
-    // pointer-events: all;
 
-    
+    //pointer-events: all;
+
+
     width: 90%;
     height: 12.5%;
     background-color: #F3A712;
     margin: 10px 10px;
-    border: 8.5px solid #E4572E;
+    border-left: 8.5px solid #E4572E;
+    border-right: 8.5px solid #E4572E;
+    border-bottom: 8.5px solid #E4572E;
     border-radius: 5px;
     padding-top: 10px 0;
     // .Header is a class that is created in the GameBar.html, this means it should be referenced with a . at the start
@@ -32,5 +35,9 @@ GameBar {
     .CustomLabel {
         color: white;
         padding: 20px;
+    }
+
+    .enablePointer {
+        pointer-events: all;
     }
 }

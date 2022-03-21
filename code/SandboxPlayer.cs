@@ -45,6 +45,16 @@ namespace Sandbox {
 			//Within this base class simulate, (player in this case) there is a Lifecheck to see if the pawn is alive, if not they will be respawned after 3 seconds
 			base.Simulate( cl );
 
+
+
+			// The Input.Pressed (InputButton class is linked to the bindings set in the menu, the .View field is linked to the C key in the bindings
+			ChangeCamera();
+			SpawnModel();
+			PrintCursorPosition();
+		}
+
+		public void SpawnModel()
+		{
 			if ( IsServer && Input.Pressed( InputButton.Attack1 ) )
 			{
 
@@ -56,23 +66,33 @@ namespace Sandbox {
 				p.PhysicsGroup.Velocity = EyeRotation.Forward * 1000;
 
 			}
-
-			// The Input.Pressed (InputButton class is linked to the bindings set in the menu, the .View field is linked to the C key in the bindings
-			if ( IsServer && Input.Pressed( InputButton.View ))
+		}
+		public void ChangeCamera()
+		{
+			if ( IsServer && Input.Pressed( InputButton.View ) )
 			{
-				if (CameraMode.GetType() == typeof( FirstPersonCamera ) )
+				if ( CameraMode.GetType() == typeof( FirstPersonCamera ) )
 				{
-					
+
 					CameraMode = new ThirdPersonCamera();
 				}
 				else
 				{
 					CameraMode = new FirstPersonCamera();
 				}
-				Log.Info("Camera mode GetType() is: " + CameraMode.GetType() );
-				Log.Info( "Camera mode TypeOf() is: " + typeof(FirstPersonCamera));
+				Log.Info( "Camera mode GetType() is: " + CameraMode.GetType() );
+				Log.Info( "Camera mode TypeOf() is: " + typeof( FirstPersonCamera ) );
 			}
+		}
 
+		public void PrintCursorPosition()
+		{
+			if (IsServer && Input.Pressed( InputButton.Forward ) )
+			{
+				Log.Info( "Mouse Position X is: " + Mouse.Position.x );
+				Log.Info( "Mouse Position Y is: " + Mouse.Position.y );
+				Log.Info( "Mouse Position is: " + Mouse.Position);
+			}
 		}
 	}
 }
