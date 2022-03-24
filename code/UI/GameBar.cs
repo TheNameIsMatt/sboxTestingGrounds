@@ -36,13 +36,14 @@ namespace Sandbox.UI
 			if (Input.Pressed(InputButton.Flashlight) && timeSincePointerActivated > 0.2f )
 			{
 				TogglePointer();
-				timeSincePointerActivated = 0f;
 			}
+
 			
 		}
-
 		public void TogglePointer()
 		{
+
+			timeSincePointerActivated = 0f;
 
 			if ( HasClass( "enablePointer" )) 
 			{
@@ -53,5 +54,7 @@ namespace Sandbox.UI
 				AddClass( "enablePointer" );
 			}
 		}
+
+		
 	}
 }

@@ -7,17 +7,18 @@ using System.Text;
 namespace Sandbox { 
 	partial class SandboxPlayer : Player
 	{
-		private TimeSince timeSinceDropped;
-		private TimeSince timeSinceJumpReleased;
-	
-		private DamageInfo lastDamage;
+
+
+		[Net, Predicted, Change(nameof( MoveByPointerPosition ) )]
+		private float MousePosition { get; set; }
+
 	
 		public override void Respawn()
 		{
 			SetModel( "models/citizen/citizen.vmdl" );
 	
 			//Because it inherits these controllers and animators you can just call Controller rather than this.controller
-			Controller = new WalkController();
+			Controller = new NoclipController();
 			Animator = new StandardPlayerAnimator();
 	
 	
@@ -51,6 +52,39 @@ namespace Sandbox {
 			ChangeCamera();
 			SpawnModel();
 			PrintCursorPosition();
+			MoveByPointerPosition();
+		}
+
+		[ClientRpc]
+		private void MoveByPointerPosition()
+		{
+			if ( IsClient )
+			{
+				MousePosition = Mouse.Position.x;
+			}
+
+			if ( IsServer )
+			{
+				if ( MousePosition < 200f )
+				{
+					Log.Info( MousePosition );
+					Log.Info( "Server Call" );
+
+					Position = Vector3.Lerp( Transform.Position, new Vector3( Transform.Position.x + 0.3f, Transform.Position.y, Transform.Position.z ), 1 );
+				}
+			}
+
+			if (IsClient)
+			{	
+				if ( MousePosition < 200f)
+				{
+					Log.Info( "Mouse Position Client Call");
+
+					 Position = Vector3.Lerp(Transform.Position, new Vector3( Transform.Position.x + 0.3f, Transform.Position.y, Transform.Position.z), 1  );
+				}
+			}
+
+
 		}
 
 		public void SpawnModel()
@@ -87,12 +121,13 @@ namespace Sandbox {
 
 		public void PrintCursorPosition()
 		{
-			if (IsServer && Input.Pressed( InputButton.Forward ) )
+			if (IsClient && Input.Pressed( InputButton.Forward ) )
 			{
-				Log.Info( "Mouse Position X is: " + Mouse.Position.x );
-				Log.Info( "Mouse Position Y is: " + Mouse.Position.y );
-				Log.Info( "Mouse Position is: " + Mouse.Position);
+				Log.Info( "Mouse Position X is: " + Mouse.Position.x);
+				Log.Info( "Mouse Position Y is: " + Mouse.Position.y);
+
 			}
 		}
+
 	}
 }
