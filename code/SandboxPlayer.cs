@@ -10,9 +10,12 @@ namespace Sandbox {
 
 
 		[Net, Predicted, Change(nameof( MoveByPointerPosition ) )]
-		private float MousePosition { get; set; }
+		private float MousePositionX { get; set; }
 
-	
+
+		[Net, Predicted, Change( nameof( MoveByPointerPosition ) )]
+		private float MousePositionY { get; set; }
+
 		public override void Respawn()
 		{
 			SetModel( "models/citizen/citizen.vmdl" );
@@ -58,33 +61,46 @@ namespace Sandbox {
 		[ClientRpc]
 		private void MoveByPointerPosition()
 		{
+			Vector3 CarriableVector = Position;
+
 			if ( IsClient )
 			{
-				MousePosition = Mouse.Position.x;
+				MousePositionX = Mouse.Position.x;
+				MousePositionY = Mouse.Position.y;
 			}
 
 			if ( IsServer )
 			{
-				if ( MousePosition < 200f )
+				
+				if ( MousePositionX < Screen.Width / 4 )
 				{
-					Log.Info( MousePosition );
-					Log.Info( "Server Call" );
 
-					Position = Vector3.Lerp( Transform.Position, new Vector3( Transform.Position.x + 0.3f, Transform.Position.y, Transform.Position.z ), 1 );
+					CarriableVector.x = CarriableVector.x + 0.3f;
 				}
+
+				if ( MousePositionY > 800 )
+				{
+
+					CarriableVector.z = CarriableVector.z - 0.3f;
+				}
+
+				Position = Vector3.Lerp( Position, CarriableVector, 1 );
 			}
 
 			if (IsClient)
-			{	
-				if ( MousePosition < 200f)
+			{
+				if ( MousePositionX < Screen.Width / 4 )
 				{
-					Log.Info( "Mouse Position Client Call");
-
-					 Position = Vector3.Lerp(Transform.Position, new Vector3( Transform.Position.x + 0.3f, Transform.Position.y, Transform.Position.z), 1  );
+					CarriableVector.x = CarriableVector.x + 0.3f;
 				}
+
+				if ( MousePositionY > 800 )
+				{
+					CarriableVector.z = CarriableVector.z - 0.3f;
+				}
+
+				Position = Vector3.Lerp( Position, CarriableVector, 1 );
 			}
-
-
 		}
 
 		public void SpawnModel()
