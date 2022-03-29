@@ -20,7 +20,9 @@ namespace Sandbox.UI
 		public Button btn { get; set; }
 		public GameBar()
 		{
+			
 			Log.Info( "Setting Template" );
+
 		}
 
 		public override void Tick()
@@ -30,7 +32,7 @@ namespace Sandbox.UI
 			timeSincePointerActivated += Time.Delta;
 
 
-			//btn.Text = "Button";
+			
 			Header.Text = "Tanks!";
 			
 			if (Input.Pressed(InputButton.Flashlight) && timeSincePointerActivated > 0.2f )
@@ -54,7 +56,10 @@ namespace Sandbox.UI
 				AddClass( "enablePointer" );
 			}
 		}
-
+		public void DisplayAMessage()
+		{
+			Log.Info( "Button Worked" );
+		}
 		
 	}
 }

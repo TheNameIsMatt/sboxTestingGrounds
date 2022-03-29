@@ -55,7 +55,9 @@ namespace Sandbox {
 			ChangeCamera();
 			SpawnModel();
 			PrintCursorPosition();
-			MoveByPointerPosition();
+
+
+		//	MoveByPointerPosition();
 		}
 
 		[ClientRpc]
@@ -74,29 +76,56 @@ namespace Sandbox {
 				
 				if ( MousePositionX < Screen.Width / 4 )
 				{
-
+					// Move player Left
 					CarriableVector.x = CarriableVector.x + 0.3f;
 				}
 
-				if ( MousePositionY > 800 )
+				if ( MousePositionX > Screen.Width - (Screen.Width / 4))
 				{
+					//Move Player Right
+					CarriableVector.x = CarriableVector.x - 0.3f;
+				}
 
+				if ( MousePositionY > Screen.Height - (Screen.Height / 4))
+				{
+					//Move Player Down
 					CarriableVector.z = CarriableVector.z - 0.3f;
+				}
+
+				if ( MousePositionY < Screen.Height / 4)
+				{
+					//Move Player Up -- Remove later for scroll feature instead
+					CarriableVector.z = CarriableVector.z + 0.3f;
 				}
 
 				Position = Vector3.Lerp( Position, CarriableVector, 1 );
 			}
 
+			//Repeat IsServer
 			if (IsClient)
 			{
 				if ( MousePositionX < Screen.Width / 4 )
 				{
+
 					CarriableVector.x = CarriableVector.x + 0.3f;
 				}
 
-				if ( MousePositionY > 800 )
+				if ( MousePositionX > Screen.Width - (Screen.Width / 4) )
 				{
+
+					CarriableVector.x = CarriableVector.x - 0.3f;
+				}
+
+				if ( MousePositionY > Screen.Height - (Screen.Height / 4) )
+				{
+
 					CarriableVector.z = CarriableVector.z - 0.3f;
+				}
+
+				if ( MousePositionY < Screen.Height / 4 )
+				{
+
+					CarriableVector.z = CarriableVector.z + 0.3f;
 				}
 
 				Position = Vector3.Lerp( Position, CarriableVector, 1 );
