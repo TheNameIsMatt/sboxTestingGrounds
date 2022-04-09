@@ -7,6 +7,12 @@ using System.Text;
 namespace Sandbox { 
 	partial class SandboxPlayer : Player
 	{
+		public TankWeapon tankWeapon;
+		public SandboxPlayer() : base() 
+		{
+
+			Inventory = new TankInventory(this);
+		}
 
 
 		[Net, Predicted, Change(nameof( MoveByPointerPosition ) )]
@@ -44,11 +50,11 @@ namespace Sandbox {
 		}
 		public override void Simulate( Client cl )
 		{
+			
 			// Because I create an instance of sandbox player after inheriting from Player I have to call base.similate
 
 			//Within this base class simulate, (player in this case) there is a Lifecheck to see if the pawn is alive, if not they will be respawned after 3 seconds
 			base.Simulate( cl );
-
 
 
 			// The Input.Pressed (InputButton class is linked to the bindings set in the menu, the .View field is linked to the C key in the bindings
@@ -138,11 +144,11 @@ namespace Sandbox {
 			{
 
 				var p = new ModelEntity();
-				p.SetModel( "weapons/rust_pistol/rust_pistol.vmdl" );
+				p.SetModel( "rockets/sboxrocket.vmdl" );
 				p.Position = EyePosition + EyeRotation.Forward * 40;
 				p.Rotation = Rotation.LookAt( Vector3.Random.Normal );
-				p.SetupPhysicsFromModel( PhysicsMotionType.Dynamic, false );
-				p.PhysicsGroup.Velocity = EyeRotation.Forward * 1000;
+
+
 
 			}
 		}

@@ -1,0 +1,10 @@
+//
+// Sandbox.TankWeapon
+//
+@BaseClass = weapon : ""
+[
+	bombname(string) : "Bomb Name" :  : ""
+	model(resource:vmdl) : "Model" :  : ""
+	amount(integer) : "Amount" : 0 : ""
+]
+
