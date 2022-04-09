@@ -3,14 +3,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Sandbox.AmmoTypes;
 
 namespace Sandbox { 
 	partial class SandboxPlayer : Player
 	{
-		public TankWeapon tankWeapon;
+		TankInventory PlayerInventory;
 		public SandboxPlayer() : base() 
 		{
-			Inventory = new TankInventory(this);
+			PlayerInventory = new TankInventory(this);
 		}
 
 
@@ -63,6 +64,7 @@ namespace Sandbox {
 			ChangeCamera();
 			SpawnModel();
 			PrintCursorPosition();
+			ClickTest();
 
 
 		//	MoveByPointerPosition();
@@ -187,7 +189,8 @@ namespace Sandbox {
 			if ( IsServer && Input.Pressed( InputButton.Attack1 ) )
 			{
 				//
-				
+				var fortheLog = PlayerInventory.PlayerAmmo.FirstOrDefault( x => x.Key.BombName == "Small Missile" ).Key;
+;				Log.Info( fortheLog.ProjectileCount );
 				//
 			}
 		}

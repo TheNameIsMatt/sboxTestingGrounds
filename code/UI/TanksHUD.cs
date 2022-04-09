@@ -22,7 +22,7 @@ namespace Sandbox.UI
 			//RootPanel.SetTemplate( "/UI/GameBar.html" );
 
 			RootPanel.AddChild<GameBar>();
-			RootPanel.AddChild<Ammo>();
+			
 			
 			
 		}

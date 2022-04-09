@@ -25,10 +25,6 @@ namespace Sandbox
 			return base.Add( ent, makeActive );
 		}
 
-		public void testytest()
-		{
-
-		}
 
 	}
 }
