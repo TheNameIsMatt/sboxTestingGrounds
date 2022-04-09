@@ -4,7 +4,9 @@
 @BaseClass = weapon : ""
 [
 	bombname(string) : "Bomb Name" :  : ""
-	model(resource:vmdl) : "Model" :  : ""
-	amount(integer) : "Amount" : 0 : ""
+	bombmodel(resource:vmdl) : "Bomb Model" :  : ""
+	projectilecount(integer) : "Projectile Count" : 0 : ""
+	explosionradius(float) : "Explosion Radius" : 0 : ""
+	bounce(boolean) : "Bounce" : 0 : ""
 ]
 

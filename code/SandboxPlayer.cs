@@ -10,7 +10,6 @@ namespace Sandbox {
 		public TankWeapon tankWeapon;
 		public SandboxPlayer() : base() 
 		{
-
 			Inventory = new TankInventory(this);
 		}
 
@@ -21,6 +20,9 @@ namespace Sandbox {
 
 		[Net, Predicted, Change( nameof( MoveByPointerPosition ) )]
 		private float MousePositionY { get; set; }
+
+
+
 
 		public override void Respawn()
 		{
@@ -43,7 +45,7 @@ namespace Sandbox {
 			EnableShadowInFirstPerson = true;
 	
 	
-			CameraMode = new FirstPersonCamera();
+			CameraMode = new ThirdPersonCamera();
 
 
 			base.Respawn();
@@ -177,6 +179,16 @@ namespace Sandbox {
 				Log.Info( "Mouse Position X is: " + Mouse.Position.x);
 				Log.Info( "Mouse Position Y is: " + Mouse.Position.y);
 
+			}
+		}
+
+		public void ClickTest()
+		{
+			if ( IsServer && Input.Pressed( InputButton.Attack1 ) )
+			{
+				//
+				
+				//
 			}
 		}
 

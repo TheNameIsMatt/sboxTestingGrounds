@@ -6,8 +6,15 @@
   "Schema": 1,
   "HasAssets": true,
   "AssetsPath": "/models/",
-  "ResourcePaths": null,
+  "ResourcePaths": [
+    "/config/"
+  ],
   "HasCode": true,
   "CodePath": "/code/",
-  "RootNamespace": "Sandbox"
+  "RootNamespace": "Sandbox",
+  "Metadata": {
+    "MapList": [
+      "facepunch.construct"
+    ]
+  }
 }
