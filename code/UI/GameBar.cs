@@ -44,7 +44,7 @@ namespace Sandbox.UI
 		}
 		public void TogglePointer()
 		{
-
+			//Because I imported my Utilities class in my GameBar.scss, I can use the enablePointer class I set
 			timeSincePointerActivated = 0f;
 
 			if ( HasClass( "enablePointer" )) 

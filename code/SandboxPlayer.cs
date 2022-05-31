@@ -6,14 +6,15 @@ using System.Text;
 using Sandbox.AmmoTypes;
 
 namespace Sandbox { 
-	partial class SandboxPlayer : Player
+	public partial class SandboxPlayer : Player
 	{
 		TankInventory PlayerInventory;
 		public SandboxPlayer() : base() 
 		{
 			PlayerInventory = new TankInventory(this);
+			
 		}
-
+		
 
 		[Net, Predicted, Change(nameof( MoveByPointerPosition ) )]
 		private float MousePositionX { get; set; }
@@ -30,7 +31,7 @@ namespace Sandbox {
 			SetModel( "models/citizen/citizen.vmdl" );
 	
 			//Because it inherits these controllers and animators you can just call Controller rather than this.controller
-			Controller = new NoclipController();
+			Controller = new WalkController();
 			Animator = new StandardPlayerAnimator();
 	
 	
@@ -63,11 +64,11 @@ namespace Sandbox {
 			// The Input.Pressed (InputButton class is linked to the bindings set in the menu, the .View field is linked to the C key in the bindings
 			ChangeCamera();
 			SpawnModel();
-			PrintCursorPosition();
-			ClickTest();
+			//PrintCursorPosition();
+			//ClickTest();
 
 
-		//	MoveByPointerPosition();
+			//MoveByPointerPosition();
 		}
 
 		[ClientRpc]
@@ -144,13 +145,13 @@ namespace Sandbox {
 
 		public void SpawnModel()
 		{
-			if ( IsServer && Input.Pressed( InputButton.Attack1 ) )
+			if ( IsServer && Input.Pressed( InputButton.PrimaryAttack) )
 			{
 
 				var p = new ModelEntity();
-				p.SetModel( "rockets/sboxrocket.vmdl" );
+				p.SetModel( "Trees/pukes_palmtree1.vmdl");
 				p.Position = EyePosition + EyeRotation.Forward * 40;
-				p.Rotation = Rotation.LookAt( Vector3.Random.Normal );
+				
 
 
 
@@ -160,7 +161,7 @@ namespace Sandbox {
 		{
 			if ( IsServer && Input.Pressed( InputButton.View ) )
 			{
-				if ( CameraMode.GetType() == typeof( FirstPersonCamera ) )
+				if ( CameraMode is FirstPersonCamera)
 				{
 
 					CameraMode = new ThirdPersonCamera();
@@ -169,8 +170,7 @@ namespace Sandbox {
 				{
 					CameraMode = new FirstPersonCamera();
 				}
-				Log.Info( "Camera mode GetType() is: " + CameraMode.GetType() );
-				Log.Info( "Camera mode TypeOf() is: " + typeof( FirstPersonCamera ) );
+
 			}
 		}
 
@@ -186,7 +186,7 @@ namespace Sandbox {
 
 		public void ClickTest()
 		{
-			if ( IsServer && Input.Pressed( InputButton.Attack1 ) )
+			if ( IsServer && Input.Pressed( InputButton.PrimaryAttack ) )
 			{
 				//
 				var fortheLog = PlayerInventory.PlayerAmmo.FirstOrDefault( x => x.Key.BombName == "Small Missile" ).Key;

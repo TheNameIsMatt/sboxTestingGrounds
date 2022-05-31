@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Sandbox
 {
-	partial class Pawn : AnimEntity
+	partial class Pawn : AnimatedEntity
 	{
 		/// <summary>
 		/// Called when the entity is first created 

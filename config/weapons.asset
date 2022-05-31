@@ -1,7 +1,7 @@
 //
 // Sandbox.AmmoTypes.SmallMissile
 //
-@BaseClass editormodel( "/models/sboxrocket.vmdl" ) = weapons : ""
+@BaseClass = weapons : ""
 [
 	bombmodel(resource:vmdl) : "Bomb Model" :  : ""
 ]

@@ -8,7 +8,6 @@ namespace Sandbox.AmmoTypes
 {
 
 	[Library( "weapons", Title = "SmallMissile" )]
-	[Hammer.EditorModel( "/models/sboxrocket.vmdl" )]
 	public class SmallMissile : TankWeapon
 	{
 		public static Model worldModel => Model.Load( "/models/sboxrocket.vmdl" );

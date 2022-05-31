@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Sandbox
 {
 	[Library("weapon"), AutoGenerate]
-	public partial class TankWeapon : Asset
+	public partial class TankWeapon 
 	{
 
 		public virtual string BombName { get; set; }

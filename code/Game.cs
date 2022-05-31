@@ -32,6 +32,12 @@ namespace Sandbox
 			}
 		}
 
+		public override void Simulate( Client cl )
+		{
+			ChangePlayerController( cl );
+			base.Simulate( cl );
+			
+		}
 		/// <summary>
 		/// A client has joined the server. Make them a pawn to play with
 		/// </summary>
@@ -61,8 +67,26 @@ namespace Sandbox
 			}
 
 		}
+		public void ChangePlayerController(Client cl)
+		{
+			if ( cl.Pawn is SandboxPlayer theirPlayer )
+			{
+				if ( Input.Pressed( InputButton.Zoom ) )
+				{
+					if ( theirPlayer.DevController is NoclipController )
+					{
+						Log.Info( "Noclip Mode Off" );
+						theirPlayer.DevController = null;
+					}
+					else
+					{
+						Log.Info( "Noclip Mode On" );
+						theirPlayer.DevController = new NoclipController();
+					}
+				}
+			}
+		}
 
-		
 	}
 
 }
