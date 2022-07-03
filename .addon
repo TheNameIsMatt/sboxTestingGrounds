@@ -1,11 +1,11 @@
 {
   "Title": "Testing Grounds",
   "Type": "game",
-  "Org": "local",
+  "Org": "pukes",
   "Ident": "testing_grounds",
   "Schema": 1,
   "HasAssets": true,
-  "AssetsPath": "/models/",
+  "AssetsPath": "/",
   "ResourcePaths": [
     "/config/"
   ],
@@ -19,7 +19,7 @@
     "PerMapRanking": false,
     "LeaderboardType": 0,
     "RankType": 0,
-    "MapSelect": 0,
+    "MapSelect": 1,
     "GameNetworkType": 0,
     "MaxPlayers": 0,
     "MinPlayers": 0

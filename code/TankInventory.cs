@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Sandbox.AmmoTypes;
+using Tanks.AmmoTypes;
 
 namespace Sandbox
 {
@@ -14,12 +14,12 @@ namespace Sandbox
 
 		public TankInventory( Entity owner ) : base( owner )
 		{
-			PlayerAmmo.Add( new SmallMissile(), 1 );
+			//PlayerAmmo.Add( new SmallMissile(), 1 );
 		}
 
 		public override bool Add( Entity ent, bool makeActive = false )
 		{
-			var player = Owner as SandboxPlayer;
+			var player = Owner as TanksPlayer;
 			//var weapon = ent as TankWeapon;
 
 			return base.Add( ent, makeActive );

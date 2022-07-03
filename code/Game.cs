@@ -46,7 +46,7 @@ namespace Sandbox
 			base.ClientJoined( client );
 
 			// Create a pawn for this client to play with
-			var player = new SandboxPlayer();
+			var player = new TanksPlayer();
 			player.Respawn();
 			
 
@@ -69,7 +69,7 @@ namespace Sandbox
 		}
 		public void ChangePlayerController(Client cl)
 		{
-			if ( cl.Pawn is SandboxPlayer theirPlayer )
+			if ( cl.Pawn is TanksPlayer theirPlayer )
 			{
 				if ( Input.Pressed( InputButton.Zoom ) )
 				{

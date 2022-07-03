@@ -5,16 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace Sandbox
+namespace Tanks.AmmoTypes
 {
-	[Library("weapon"), AutoGenerate]
 	public partial class TankWeapon 
 	{
 
 		public virtual string BombName { get; set; }
 
-		[ResourceType("vmdl")]
-		public virtual Model BombModel { get; set; }
 
 		// Replaced with a Key Value Pair in the Inventory Class
 		// public virtual int Amount { get; set; }
