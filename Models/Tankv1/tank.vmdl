@@ -16,8 +16,18 @@
 						[
 							{
 								_class = "Bone"
-								name = "BarrelBone"
-								origin = [ 0.7155, 23.481701, -0.3824 ]
+								name = "BarrelRotaterBone"
+								children = 
+								[
+									{
+										_class = "Bone"
+										name = "BarrelBone"
+										origin = [ 0.000046, 13.471172, 0.0 ]
+										angles = [ -0.0, -0.000006, 0.0 ]
+										do_not_discard = true
+									},
+								]
+								origin = [ -0.1724, 23.721001, -0.3824 ]
 								angles = [ 0.0, -88.20977, -0.0 ]
 								do_not_discard = true
 							},
@@ -34,6 +44,7 @@
 				[
 					{
 						_class = "DefaultMaterialGroup"
+						name = "Default_Green"
 						remaps = 
 						[
 							{
@@ -60,7 +71,8 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "Models/Tankv1/Tank.fbx"
+						name = "Tank"
+						filename = "models/Tankv1/Tank.fbx"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -82,7 +94,7 @@
 				[
 					{
 						_class = "AnimFile"
-						name = "Tank"
+						name = "DefaultPose"
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
@@ -94,11 +106,32 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "Models/Tankv1/Tank.fbx"
+						source_filename = "models/Tankv1/Tank.fbx"
 						start_frame = 0
-						end_frame = 59
+						end_frame = 1
 						framerate = -1.0
-						take = 3
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "StraightUp"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.0
+						fade_out_time = 0.0
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/Tankv1/Tank.fbx"
+						start_frame = 0
+						end_frame = 10
+						framerate = -1.0
+						take = 1
 						reverse = false
 					},
 				]
