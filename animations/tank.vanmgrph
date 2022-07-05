@@ -9,20 +9,49 @@
 			{
 				key = 
 				{
-					m_id = 90219190
+					m_id = 236558161
+				}
+				value = 
+				{
+					_class = "CRootAnimNode"
+					m_sName = "Unnamed"
+					m_vecPosition = [ -400.0, 224.0 ]
+					m_nNodeID = 
+					{
+						m_id = 236558161
+					}
+					m_networkMode = "ServerAuthoritative"
+					m_sNote = ""
+					m_inputConnection = 
+					{
+						m_nodeID = 
+						{
+							m_id = 2032544275
+						}
+						m_outputID = 
+						{
+							m_id = 4294967295
+						}
+					}
+				}
+			},
+			{
+				key = 
+				{
+					m_id = 1170613575
 				}
 				value = 
 				{
 					_class = "CSingleFrameAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -640.0, -32.0 ]
+					m_vecPosition = [ -880.0, 224.0 ]
 					m_nNodeID = 
 					{
-						m_id = 90219190
+						m_id = 1170613575
 					}
 					m_networkMode = "ServerAuthoritative"
-					m_sNote = "Type note..."
-					m_sequenceName = ""
+					m_sNote = ""
+					m_sequenceName = "TankFullRotationAnimation"
 					m_nFrameIndex = 0
 					m_tagSpans = [  ]
 				}
@@ -30,16 +59,16 @@
 			{
 				key = 
 				{
-					m_id = 314140218
+					m_id = 2032544275
 				}
 				value = 
 				{
 					_class = "CLookAtAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -496.0, 96.0 ]
+					m_vecPosition = [ -608.0, 224.0 ]
 					m_nNodeID = 
 					{
-						m_id = 314140218
+						m_id = 2032544275
 					}
 					m_networkMode = "ServerAuthoritative"
 					m_sNote = ""
@@ -47,153 +76,26 @@
 					{
 						m_nodeID = 
 						{
-							m_id = 1416057881
+							m_id = 1170613575
 						}
 						m_outputID = 
 						{
 							m_id = 4294967295
 						}
 					}
-					m_target = "LookTarget"
+					m_target = "VectorParameter"
 					m_param = 
 					{
-						m_id = 4294967295
+						m_id = 1136781415
 					}
 					m_weightParam = 
 					{
 						m_id = 4294967295
 					}
-					m_lookatChainName = ""
-					m_attachmentName = ""
-					m_flYawLimit = 45.0
-					m_flPitchLimit = 45.0
-					m_bResetBase = true
-					m_bLockWhenWaning = true
-					m_bUseHysteresis = false
-					m_flHysteresisInnerAngle = 1.0
-					m_flHysteresisOuterAngle = 20.0
-					m_damping = 
-					{
-						_class = "CAnimInputDamping"
-						m_speedFunction = "NoDamping"
-						m_fSpeedScale = 1.0
-						m_fMinSpeed = 10.0
-						m_fMaxTension = 1000.0
-					}
-				}
-			},
-			{
-				key = 
-				{
-					m_id = 330761802
-				}
-				value = 
-				{
-					_class = "CAimMatrixAnimNode"
-					m_sName = "Unnamed"
-					m_vecPosition = [ -272.0, 16.0 ]
-					m_nNodeID = 
-					{
-						m_id = 330761802
-					}
-					m_networkMode = "ServerAuthoritative"
-					m_sNote = ""
-					m_inputConnection = 
-					{
-						m_nodeID = 
-						{
-							m_id = 4294967295
-						}
-						m_outputID = 
-						{
-							m_id = 4294967295
-						}
-					}
-					m_sequenceName = "360Spin"
-					m_fAngleIncrement = 45.0
-					m_bCanLookStraightDown = false
-					m_target = "LookTarget"
-					m_param = 
-					{
-						m_id = 4294967295
-					}
-					m_attachmentName = ""
-					m_blendMode = "AimMatrixBlendMode_Additive"
-					m_boneMaskName = ""
-					m_bResetBase = true
-					m_bLockWhenWaning = true
-					m_damping = 
-					{
-						_class = "CAnimInputDamping"
-						m_speedFunction = "NoDamping"
-						m_fSpeedScale = 1.0
-						m_fMinSpeed = 10.0
-						m_fMaxTension = 1000.0
-					}
-				}
-			},
-			{
-				key = 
-				{
-					m_id = 1416057881
-				}
-				value = 
-				{
-					_class = "CSequenceAnimNode"
-					m_sName = "Unnamed"
-					m_vecPosition = [ -736.0, 96.0 ]
-					m_nNodeID = 
-					{
-						m_id = 1416057881
-					}
-					m_networkMode = "ClientPredicted"
-					m_sNote = ""
-					m_tagSpans = [  ]
-					m_sequenceName = "360Spin"
-					m_playbackSpeed = 1.0
-					m_bLoop = true
-				}
-			},
-			{
-				key = 
-				{
-					m_id = 2046224760
-				}
-				value = 
-				{
-					_class = "CLookAtAnimNode"
-					m_sName = "Unnamed"
-					m_vecPosition = [ -304.0, 96.0 ]
-					m_nNodeID = 
-					{
-						m_id = 2046224760
-					}
-					m_networkMode = "ServerAuthoritative"
-					m_sNote = ""
-					m_inputConnection = 
-					{
-						m_nodeID = 
-						{
-							m_id = 314140218
-						}
-						m_outputID = 
-						{
-							m_id = 4294967295
-						}
-					}
-					m_target = "LookTarget"
-					m_param = 
-					{
-						m_id = 4294967295
-					}
-					m_weightParam = 
-					{
-						m_id = 4294967295
-					}
-					m_lookatChainName = ""
-					m_attachmentName = ""
-					m_flYawLimit = 45.0
-					m_flPitchLimit = 45.0
+					m_lookatChainName = "BarrelRotater"
+					m_attachmentName = "forward_reference"
+					m_flYawLimit = 180.0
+					m_flPitchLimit = 180.0
 					m_bResetBase = true
 					m_bLockWhenWaning = true
 					m_bUseHysteresis = false
@@ -214,7 +116,40 @@
 	m_pParameterList = 
 	{
 		_class = "CAnimParameterList"
-		m_Parameters = [  ]
+		m_Parameters = 
+		[
+			{
+				_class = "CVectorAnimParameter"
+				m_name = "Rotation"
+				m_id = 
+				{
+					m_id = 1136781415
+				}
+				m_previewButton = "ANIMPARAM_BUTTON_NONE"
+				m_bNetwork = true
+				m_bUseMostRecentValue = true
+				m_bAutoReset = false
+				m_bPredicted = true
+				m_defaultValue = [ 0.0, 0.0, 0.0 ]
+				m_bInterpolate = true
+			},
+			{
+				_class = "CIntAnimParameter"
+				m_name = "RotationFrame"
+				m_id = 
+				{
+					m_id = 1260310925
+				}
+				m_previewButton = "ANIMPARAM_BUTTON_NONE"
+				m_bNetwork = false
+				m_bUseMostRecentValue = false
+				m_bAutoReset = false
+				m_bPredicted = false
+				m_defaultValue = 0
+				m_minValue = 0
+				m_maxValue = 100
+			},
+		]
 	}
 	m_pTagManager = 
 	{

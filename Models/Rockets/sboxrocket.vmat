@@ -11,12 +11,12 @@ Layer0
 	//---- Ambient Occlusion ----
 	g_flAmbientOcclusionDirectDiffuse "0.000"
 	g_flAmbientOcclusionDirectSpecular "0.000"
-	TextureAmbientOcclusion "Rockets/SboxRocketAssets/Rockets_Mixed_AO.png"
+	TextureAmbientOcclusion "models/Rockets/SboxRocketAssets/Rockets_Mixed_AO.png"
 
 	//---- Color ----
 	g_flModelTintAmount "1.000"
 	g_vColorTint "[1.000000 1.000000 1.000000 0.000000]"
-	TextureColor "Rockets/SboxRocketAssets/Rockets_Base_color.png"
+	TextureColor "models/Rockets/SboxRocketAssets/Rockets_Base_color.png"
 
 	//---- Fade ----
 	g_flFadeExponent "1.000"
@@ -29,13 +29,13 @@ Layer0
 	g_flDirectionalLightmapStrength "1.000"
 
 	//---- Metalness ----
-	TextureMetalness "Rockets/SboxRocketAssets/Rockets_Metallic.png"
+	TextureMetalness "models/Rockets/SboxRocketAssets/Rockets_Metallic.png"
 
 	//---- Normal ----
-	TextureNormal "Rockets/SboxRocketAssets/Rockets_Normal.png"
+	TextureNormal "models/Rockets/SboxRocketAssets/Rockets_Normal.png"
 
 	//---- Roughness ----
-	TextureRoughness "Rockets/SboxRocketAssets/Rockets_Roughness.png"
+	TextureRoughness "models/Rockets/SboxRocketAssets/Rockets_Roughness.png"
 
 	//---- Texture Coordinates ----
 	g_nScaleTexCoordUByModelScaleAxis "0"

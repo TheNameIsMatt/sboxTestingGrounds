@@ -26,12 +26,12 @@ namespace Sandbox {
 		public override void Respawn()
 		{
 			
-			SetModel( "models/citizen/citizen.vmdl" );
-	
+			SetModel( "models/Tankv1/tank.vmdl" );
+
 			//Because it inherits these controllers and animators you can just call Controller rather than this.controller
-			Controller = new WalkController();
+			Controller = new TankController();
 			Animator = new StandardPlayerAnimator();
-	
+			
 	
 	
 			if ( DevController is NoclipController )
@@ -45,8 +45,8 @@ namespace Sandbox {
 			EnableShadowInFirstPerson = true;
 
 
-			CameraMode = new Camera();
-			UpdateCameraTarget( this );
+			CameraMode = new ThirdPersonCamera();
+			//UpdateCameraTarget( this );
 
 			base.Respawn();
 		}
@@ -58,7 +58,7 @@ namespace Sandbox {
 			//Within this base class simulate, (player in this case) there is a Lifecheck to see if the pawn is alive, if not they will be respawned after 3 seconds
 			base.Simulate( cl );
 			
-
+			
 			// The Input.Pressed (InputButton class is linked to the bindings set in the menu, the .View field is linked to the C key in the bindings
 			//ChangeCamera();
 			SpawnModel();
@@ -68,6 +68,11 @@ namespace Sandbox {
 
 			//MoveByPointerPosition();
 		}
+
+
+
+
+
 
 		[ClientRpc]
 		private void MoveByPointerPosition()

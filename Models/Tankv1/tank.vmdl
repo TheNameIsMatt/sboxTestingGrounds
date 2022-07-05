@@ -44,24 +44,9 @@
 				[
 					{
 						_class = "DefaultMaterialGroup"
-						name = "Default_Green"
-						remaps = 
-						[
-							{
-								from = "plane.003.vmat"
-								to = "models/tankv1/greentank.vmat"
-							},
-							{
-								from = "uv squares.vmat"
-								to = "models/tankv1/greentank.vmat"
-							},
-							{
-								from = "cylinder.vmat"
-								to = "models/tankv1/greentank.vmat"
-							},
-						]
+						remaps = [  ]
 						use_global_default = true
-						global_default_material = "models/tankv1/greentank.vmat"
+						global_default_material = "materials/hotspots/metal_painted_green_a_hs.vmat"
 					},
 				]
 			},
@@ -115,12 +100,12 @@
 					},
 					{
 						_class = "AnimFile"
-						name = "StraightUp"
+						name = "PointBarrelUp"
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
-						fade_in_time = 0.0
-						fade_out_time = 0.0
+						fade_in_time = 0.2
+						fade_out_time = 0.2
 						looping = false
 						delta = false
 						worldSpace = false
@@ -129,13 +114,74 @@
 						disable_compression = false
 						source_filename = "models/Tankv1/Tank.fbx"
 						start_frame = 0
-						end_frame = 10
+						end_frame = 30
 						framerate = -1.0
 						take = 1
 						reverse = false
 					},
+					{
+						_class = "AnimFile"
+						name = "TankFullRotationAnimation"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/Tankv1/TankFullRotationAnimation.fbx"
+						start_frame = 0
+						end_frame = 60
+						framerate = -1.0
+						take = 2
+						reverse = false
+					},
 				]
 				default_root_bone_name = ""
+			},
+			{
+				_class = "GameDataList"
+				children = 
+				[
+					{
+						_class = "LookAtChain"
+						name = "BarrelRotater"
+						lookat_chain = 
+						{
+							name = ""
+							bones = 
+							[
+								{
+									name = "BarrelRotaterBone"
+									weight = 1.0
+								},
+								{
+									name = "BarrelBone"
+									weight = 0.0
+								},
+							]
+						}
+					},
+				]
+			},
+			{
+				_class = "AttachmentList"
+				children = 
+				[
+					{
+						_class = "Attachment"
+						name = "forward_reference"
+						parent_bone = "BarrelBone"
+						relative_origin = [ 0.0, 0.0, 0.0 ]
+						relative_angles = [ 0.0, 0.0, 0.0 ]
+						weight = 1.0
+						ignore_rotation = true
+					},
+				]
 			},
 		]
 		model_archetype = ""

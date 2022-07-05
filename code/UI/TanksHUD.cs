@@ -23,8 +23,8 @@ namespace Sandbox.UI
 			//RootPanel.SetTemplate( "/UI/GameBar.html" );
 
 			//If [UseTemplate] Attribute is applied, you will not need to use the setTemplate function on all these child panels as they will automatically be bound
-			RootPanel.AddChild<GameBar>();
-			RootPanel.AddChild<ChatPanel>();
+			//RootPanel.AddChild<GameBar>();
+			//RootPanel.AddChild<ChatPanel>();
 			
 		}
 	}
