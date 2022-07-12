@@ -20,7 +20,10 @@ namespace Sandbox.UI
 
 		public ChatPanel()
 		{
+			AddChild<Slider2D>().AddClass("slider");
 			Instance = this;
 		}
+
+
 	}
 }

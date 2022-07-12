@@ -9,7 +9,7 @@ namespace Sandbox {
 		public TanksPlayer() : base() 
 		{
 			PlayerInventory = new TankInventory(this);
-			
+			SetAnimGraph( "animations/tank.vanmgrph" );
 		}
 		
 
@@ -30,10 +30,12 @@ namespace Sandbox {
 
 			//Because it inherits these controllers and animators you can just call Controller rather than this.controller
 			Controller = new TankController();
-			Animator = new StandardPlayerAnimator();
-			
-	
-	
+
+			Animator = new StandardTankAnimator();
+
+			CameraMode = new ThirdPersonCamera();
+
+
 			if ( DevController is NoclipController )
 			{
 				DevController = null;
@@ -44,19 +46,16 @@ namespace Sandbox {
 			EnableHideInFirstPerson = true;
 			EnableShadowInFirstPerson = true;
 
-
-			CameraMode = new ThirdPersonCamera();
-			//UpdateCameraTarget( this );
-
 			base.Respawn();
 		}
+
+
 		public override void Simulate( Client cl )
 		{
-			
 			// Because I create an instance of sandbox player after inheriting from Player I have to call base.similate
 
 			//Within this base class simulate, (player in this case) there is a Lifecheck to see if the pawn is alive, if not they will be respawned after 3 seconds
-			base.Simulate( cl );
+			
 			
 			
 			// The Input.Pressed (InputButton class is linked to the bindings set in the menu, the .View field is linked to the C key in the bindings
@@ -67,11 +66,8 @@ namespace Sandbox {
 
 
 			//MoveByPointerPosition();
+			base.Simulate( cl );
 		}
-
-
-
-
 
 
 		[ClientRpc]
@@ -152,11 +148,8 @@ namespace Sandbox {
 			{
 
 				var p = new ModelEntity();
-				p.SetModel( "Trees/pukes_palmtree1.vmdl");
+				p.SetModel( "models/rockets/sboxrocket.vmdl");
 				p.Position = EyePosition + EyeRotation.Forward * 40;
-				
-
-
 
 			}
 		}
@@ -177,33 +170,7 @@ namespace Sandbox {
 			}
 		}
 
-		public void PrintCursorPosition()
-		{
-			if (IsClient && Input.Pressed( InputButton.Forward ) )
-			{
-				Log.Info( "Mouse Position X is: " + Mouse.Position.x);
-				Log.Info( "Mouse Position Y is: " + Mouse.Position.y);
 
-			}
-		}
-
-		public void ClickTest()
-		{
-			if ( IsServer && Input.Pressed( InputButton.PrimaryAttack ) )
-			{
-				//
-				var fortheLog = PlayerInventory.PlayerAmmo.FirstOrDefault( x => x.Key.BombName == "Small Missile" ).Key;
-;				Log.Info( fortheLog.ProjectileCount );
-				//
-			}
-		}
-
-
-		[ClientRpc]
-		public void UpdateCameraTarget( Entity target )
-		{
-			(CameraMode as Camera).SetLookTarget( target );
-		}
 
 	}
 }

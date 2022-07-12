@@ -25,7 +25,7 @@ namespace Tanks
 		}
 		public virtual void Move()
 		{
-			if (b_isAiming == false && Input.Down( InputButton.Right ) ) 
+			if (!b_isAiming  && Input.Down( InputButton.Right ) ) 
 			{
 				Vector3 move = Pawn.Position;
 				move.x += (TankSpeed * Acceleration * Time.Delta);
@@ -35,7 +35,7 @@ namespace Tanks
 
 			}
 
-			if ( b_isAiming == false && Input.Down( InputButton.Left ) )
+			if (!b_isAiming && Input.Down( InputButton.Left ) )
 			{
 				Vector3 move = Pawn.Position;
 				move.x -= (TankSpeed * Acceleration * Time.Delta);

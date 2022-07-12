@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Sandbox;
+using Tanks;
+using Tanks.Utils;
 
 namespace Sandbox.UI
 {
@@ -18,19 +16,28 @@ namespace Sandbox.UI
 
 		//This property has the same names as the @ref in the html. BUT THE CLASS NAME CAN BE DIFFERENT IN THE HTML AS THAT CAN BE CUSTOMISED IN SCSS
 		public Button btn { get; set; }
+
+		
+		public Slider BarrelRotation { get; set; }
 		public GameBar()
 		{
 			
 			Log.Info( "Setting Template" );
-
+			
 		}
 
 		public override void Tick()
 		{
-			base.Tick();
-
 			timeSincePointerActivated += Time.Delta;
 
+			if (Host.IsClient)
+				Log.Info( "Current value of Barrel Rotation is " + BarrelRotation.Value );
+			if (Local.Pawn is TanksPlayer )
+			{
+				var pawn = (Local.Pawn as TanksPlayer);
+				pawn.Animator.SetAnimParameter( "BarrelRotation", BarrelRotation.Value );
+
+			}
 
 			
 			Header.Text = "Tanks!";
@@ -40,7 +47,7 @@ namespace Sandbox.UI
 				TogglePointer();
 			}
 
-			
+			base.Tick();
 		}
 		public void TogglePointer()
 		{

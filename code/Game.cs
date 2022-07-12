@@ -7,6 +7,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Tanks;
 
 //
 // You don't need to put things in a namespace, but it doesn't hurt.
@@ -21,7 +22,7 @@ namespace Sandbox
 	/// to use for spawned players.
 	/// </summary>
 	/// 
-	[Library("SnortDoors", Title = "SnortDoors")]
+	[Library("Tanks", Title = "Tanks")]
 	public partial class MyGame : Sandbox.Game
 	{
 		public MyGame()

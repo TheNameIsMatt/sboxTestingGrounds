@@ -5,10 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Sandbox;
 using Sandbox.UI;
+using Sandbox.UI.Construct;
 
-namespace Sandbox.UI
+namespace Tanks
 {
 	[Library]
+	[UseTemplate]
 	public partial class TanksHUD : HudEntity<RootPanel>
 	{
 	
@@ -20,12 +22,11 @@ namespace Sandbox.UI
 			Log.Info( "HUD Intialised" );
 
 
-			//RootPanel.SetTemplate( "/UI/GameBar.html" );
-
-			//If [UseTemplate] Attribute is applied, you will not need to use the setTemplate function on all these child panels as they will automatically be bound
-			//RootPanel.AddChild<GameBar>();
+			//If [UseTemplate] Attribute is applied, you will not need to use the setTemplate function in all these child panels as they will automatically be bound
+			RootPanel.AddChild<GameBar>();
 			//RootPanel.AddChild<ChatPanel>();
-			
+				
 		}
+
 	}
 }

@@ -46,7 +46,7 @@
 						_class = "DefaultMaterialGroup"
 						remaps = [  ]
 						use_global_default = true
-						global_default_material = "materials/hotspots/metal_painted_green_a_hs.vmat"
+						global_default_material = "models/tankv1/materials/greentank.vmat"
 					},
 				]
 			},
@@ -100,27 +100,6 @@
 					},
 					{
 						_class = "AnimFile"
-						name = "PointBarrelUp"
-						activity_name = ""
-						activity_weight = 1
-						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
-						looping = false
-						delta = false
-						worldSpace = false
-						hidden = false
-						anim_markup_ordered = false
-						disable_compression = false
-						source_filename = "models/Tankv1/Tank.fbx"
-						start_frame = 0
-						end_frame = 30
-						framerate = -1.0
-						take = 1
-						reverse = false
-					},
-					{
-						_class = "AnimFile"
 						name = "TankFullRotationAnimation"
 						activity_name = ""
 						activity_weight = 1
@@ -138,6 +117,48 @@
 						end_frame = 60
 						framerate = -1.0
 						take = 2
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "BarrelUp"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/Tankv1/TankAnimation.fbx"
+						start_frame = 0
+						end_frame = 60
+						framerate = -1.0
+						take = 2
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "BarrelBack"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/Tankv1/TankAnimation.fbx"
+						start_frame = 0
+						end_frame = 60
+						framerate = -1.0
+						take = 3
 						reverse = false
 					},
 				]
