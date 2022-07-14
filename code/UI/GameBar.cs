@@ -1,6 +1,7 @@
 ﻿using Sandbox;
 using Tanks;
 using Tanks.Utils;
+using System;
 
 namespace Sandbox.UI
 {
@@ -8,6 +9,7 @@ namespace Sandbox.UI
 	[UseTemplate]
 	public class GameBar : Panel
 	{
+		
 		private TimeSince timeSincePointerActivated;
 
 		//The names of these properties MUST MATCH the names of the @ref classes in the HTML file
@@ -17,8 +19,13 @@ namespace Sandbox.UI
 		//This property has the same names as the @ref in the html. BUT THE CLASS NAME CAN BE DIFFERENT IN THE HTML AS THAT CAN BE CUSTOMISED IN SCSS
 		public Button btn { get; set; }
 
-		
+
+		public static event Action<float> BarrelRotated;
+
+
 		public Slider BarrelRotation { get; set; }
+
+		float PreviousBarrelRotation;
 		public GameBar()
 		{
 			
@@ -26,27 +33,25 @@ namespace Sandbox.UI
 			
 		}
 
+
 		public override void Tick()
 		{
+			
+			if((BarrelRotation.Value != PreviousBarrelRotation) && Host.IsClient)
+				BarrelRotated( BarrelRotation.Value );
+
 			timeSincePointerActivated += Time.Delta;
 
-			if (Host.IsClient)
-				Log.Info( "Current value of Barrel Rotation is " + BarrelRotation.Value );
-			if (Local.Pawn is TanksPlayer )
-			{
-				var pawn = (Local.Pawn as TanksPlayer);
-				pawn.Animator.SetAnimParameter( "BarrelRotation", BarrelRotation.Value );
+			//if (Host.IsClient)
+			//	Log.Info( "Current value of Barrel Rotation is " + BarrelRotation.Value );
 
-			}
-
-			
 			Header.Text = "Tanks!";
 			
 			if (Input.Pressed(InputButton.Flashlight) && timeSincePointerActivated > 0.2f )
 			{
 				TogglePointer();
 			}
-
+			PreviousBarrelRotation = GetBarrelRotation();
 			base.Tick();
 		}
 		public void TogglePointer()
@@ -68,5 +73,9 @@ namespace Sandbox.UI
 			Log.Info( "Button Worked" );
 		}
 		
+		public float GetBarrelRotation()
+		{
+			return BarrelRotation.Value;
+		}
 	}
 }

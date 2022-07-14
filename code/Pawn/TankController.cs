@@ -18,8 +18,8 @@ namespace Tanks
 		{
 
 
-			DebugOverlay.ScreenText( $"        Tank Speed: {TankSpeed}", 0);
-			DebugOverlay.ScreenText( $"        Is Aiming?: {b_isAiming}", 1 );
+			DebugOverlay.ScreenText( $"        Tank Speed: {TankSpeed}", 1);
+			DebugOverlay.ScreenText( $"        Is Aiming?: {b_isAiming}", 2 );
 			Move();
 			base.Simulate();
 		}
@@ -31,8 +31,6 @@ namespace Tanks
 				move.x += (TankSpeed * Acceleration * Time.Delta);
 				move.x = MathX.Lerp(Position.x, move.x, 0.1f);
 				Position = move;
-				
-
 			}
 
 			if (!b_isAiming && Input.Down( InputButton.Left ) )
