@@ -8,29 +8,25 @@ namespace Tanks
 	public partial class StandardTankAnimator : PawnAnimator
 	{
 		//Having Net and Change in the brackets means its only called clientside
-		[Net, Change] public float BarrelRotation { get; set; } = 30f;
+		
 		public StandardTankAnimator()
 		{
 			
 			SetAnimParameter( "BarrelRotation", 0f );
-			GameBar.BarrelRotated += OnBarrelRotationChanged;
 		}
 
 		public override void Simulate()
 		{
-			if ( Host.IsServer ) {
-			Log.Info( "Value of BarrelRotation  " + BarrelRotation );
+			var BarrelRotation = (Pawn as TanksPlayer).PlayerBarrelRotation;
+			if(Host.IsServer)
+				Log.Info( "Value from server pawn " + (Pawn as TanksPlayer).PlayerBarrelRotation);
+			if ( Host.IsClient )
+				Log.Info( "Value from client pawn " + (Pawn as TanksPlayer).PlayerBarrelRotation );
 			SetAnimParameter( "BarrelRotation", BarrelRotation );
-		}
 			base.Simulate();
 		}
 
-		[ConCmd.Server]
-		public void OnBarrelRotationChanged( float obj )
-		{
-				BarrelRotation = obj;
-		
-		}
+
 		
 	}
 }

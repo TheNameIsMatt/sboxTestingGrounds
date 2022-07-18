@@ -36,9 +36,9 @@ namespace Sandbox.UI
 
 		public override void Tick()
 		{
-			
-			if((BarrelRotation.Value != PreviousBarrelRotation) && Host.IsClient)
-				BarrelRotated( BarrelRotation.Value );
+
+			if ( (BarrelRotation.Value != PreviousBarrelRotation) && Host.IsClient )
+				SetPawnBarrelRotation( BarrelRotation.Value );
 
 			timeSincePointerActivated += Time.Delta;
 
@@ -72,10 +72,16 @@ namespace Sandbox.UI
 		{
 			Log.Info( "Button Worked" );
 		}
-		
+			
 		public float GetBarrelRotation()
 		{
 			return BarrelRotation.Value;
+		}
+
+		[ConCmd.Server("SetPawnBarrelRotation")]
+		public void SetPawnBarrelRotation(float rotation)
+		{
+			(Local.Client.Pawn as TanksPlayer).PlayerBarrelRotation = rotation; 
 		}
 	}
 }

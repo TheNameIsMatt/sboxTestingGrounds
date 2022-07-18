@@ -20,7 +20,7 @@
 					{
 						m_id = 724247304
 					}
-					m_networkMode = "ServerAuthoritative"
+					m_networkMode = "ClientPredicted"
 					m_sNote = ""
 					m_sequenceName = "BarrelUp"
 					m_nFrameIndex = 0
@@ -41,7 +41,7 @@
 					{
 						m_id = 1416044773
 					}
-					m_networkMode = "ServerAuthoritative"
+					m_networkMode = "ClientPredicted"
 					m_sNote = ""
 					m_children = 
 					[
@@ -125,7 +125,7 @@
 					{
 						m_id = 1795547841
 					}
-					m_networkMode = "ServerAuthoritative"
+					m_networkMode = "ClientPredicted"
 					m_sNote = ""
 					m_inputConnection = 
 					{
@@ -154,7 +154,7 @@
 					{
 						m_id = 1945984265
 					}
-					m_networkMode = "ServerAuthoritative"
+					m_networkMode = "ClientPredicted"
 					m_sNote = ""
 					m_sequenceName = "BarrelBack"
 					m_nFrameIndex = 2
@@ -175,7 +175,7 @@
 					{
 						m_id = 2107035031
 					}
-					m_networkMode = "ServerAuthoritative"
+					m_networkMode = "ClientPredicted"
 					m_sNote = ""
 					m_sequenceName = "DefaultPose"
 					m_nFrameIndex = 1

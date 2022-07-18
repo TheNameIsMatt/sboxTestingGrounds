@@ -6,20 +6,18 @@ namespace Sandbox {
 	public partial class TanksPlayer : Player
 	{
 		TankInventory PlayerInventory;
+
+		
+		public float PlayerBarrelRotation;
+
+
 		public TanksPlayer() : base() 
 		{
 			PlayerInventory = new TankInventory(this);
 			SetAnimGraph( "animations/tank.vanmgrph" );
+			PlayerBarrelRotation = 0f;
 		}
 		
-
-		[Net, Predicted, Change(nameof( MoveByPointerPosition ) )]
-		private float MousePositionX { get; set; }
-
-
-		[Net, Predicted, Change( nameof( MoveByPointerPosition ) )]
-		private float MousePositionY { get; set; }
-
 
 
 
@@ -70,77 +68,6 @@ namespace Sandbox {
 		}
 
 
-		[ClientRpc]
-		private void MoveByPointerPosition()
-		{
-			Vector3 CarriableVector = Position;
-
-			if ( IsClient )
-			{
-				MousePositionX = Mouse.Position.x;
-				MousePositionY = Mouse.Position.y;
-			}
-
-			if ( IsServer )
-			{
-				
-				if ( MousePositionX < Screen.Width / 4 )
-				{
-					// Move player Left
-					CarriableVector.x = CarriableVector.x + 0.3f;
-				}
-
-				if ( MousePositionX > Screen.Width - (Screen.Width / 4))
-				{
-					//Move Player Right
-					CarriableVector.x = CarriableVector.x - 0.3f;
-				}
-
-				if ( MousePositionY > Screen.Height - (Screen.Height / 4))
-				{
-					//Move Player Down
-					CarriableVector.z = CarriableVector.z - 0.3f;
-				}
-
-				if ( MousePositionY < Screen.Height / 4)
-				{
-					//Move Player Up -- Remove later for scroll feature instead
-					CarriableVector.z = CarriableVector.z + 0.3f;
-				}
-
-				Position = Vector3.Lerp( Position, CarriableVector, 1 );
-			}
-
-			//Repeat IsServer
-			if (IsClient)
-			{
-				if ( MousePositionX < Screen.Width / 4 )
-				{
-
-					CarriableVector.x = CarriableVector.x + 0.3f;
-				}
-
-				if ( MousePositionX > Screen.Width - (Screen.Width / 4) )
-				{
-
-					CarriableVector.x = CarriableVector.x - 0.3f;
-				}
-
-				if ( MousePositionY > Screen.Height - (Screen.Height / 4) )
-				{
-
-					CarriableVector.z = CarriableVector.z - 0.3f;
-				}
-
-				if ( MousePositionY < Screen.Height / 4 )
-				{
-
-					CarriableVector.z = CarriableVector.z + 0.3f;
-				}
-
-				Position = Vector3.Lerp( Position, CarriableVector, 1 );
-			}
-		}
 
 		public void SpawnModel()
 		{
@@ -153,24 +80,6 @@ namespace Sandbox {
 
 			}
 		}
-		public void ChangeCamera()
-		{
-			if ( IsServer && Input.Pressed( InputButton.View ) )
-			{
-				if ( CameraMode is FirstPersonCamera)
-				{
-
-					CameraMode = new ThirdPersonCamera();
-				}
-				else
-				{
-					CameraMode = new FirstPersonCamera();
-				}
-
-			}
-		}
-
-
 
 	}
 }
