@@ -41,7 +41,7 @@
 					{
 						m_id = 1416044773
 					}
-					m_networkMode = "ClientPredicted"
+					m_networkMode = "ServerAuthoritative"
 					m_sNote = ""
 					m_children = 
 					[

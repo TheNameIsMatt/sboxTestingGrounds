@@ -1,0 +1,20 @@
+﻿@import "Utilities.scss";
+
+BattleBar {
+    background-image: url("ui/BattleBar.png");
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    
+    .FireButton{
+        background-color:red;
+        width:50px;
+        height:50px;
+        justify-content:center;
+        position:absolute;
+    }
+}
+
+.Screen{
+    justify-content:center;
+}

@@ -18,10 +18,10 @@ namespace Tanks
 		public override void Simulate()
 		{
 			var BarrelRotation = (Pawn as TanksPlayer).PlayerBarrelRotation;
-			if(Host.IsServer)
-				Log.Info( "Value from server pawn " + (Pawn as TanksPlayer).PlayerBarrelRotation);
-			if ( Host.IsClient )
-				Log.Info( "Value from client pawn " + (Pawn as TanksPlayer).PlayerBarrelRotation );
+			//if(Host.IsServer)
+			//	Log.Info( "Value from server pawn " + (Pawn as TanksPlayer).PlayerBarrelRotation);
+			//if ( Host.IsClient )
+			//	Log.Info( "Value from client pawn " + (Pawn as TanksPlayer).PlayerBarrelRotation );
 			SetAnimParameter( "BarrelRotation", BarrelRotation );
 			base.Simulate();
 		}

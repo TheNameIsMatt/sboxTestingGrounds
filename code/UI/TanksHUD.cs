@@ -23,7 +23,11 @@ namespace Tanks
 
 
 			//If [UseTemplate] Attribute is applied, you will not need to use the setTemplate function in all these child panels as they will automatically be bound
-			RootPanel.AddChild<GameBar>();
+
+			// RootPanel.AddChild<GameBar>(); Old Bar
+			RootPanel.AddChild<BattleBar>();
+
+
 			//RootPanel.AddChild<ChatPanel>();
 				
 		}
