@@ -9,11 +9,13 @@ namespace Sandbox.UI
 	[UseTemplate]
 	public class BattleBar : Panel
  	{
+		
 		private TimeSince timeSincePointerActivated;
 		public Button FireButton { get; set; }
 		public BattleBar()
 		{
-
+			AddChild<LeftBar>();
+			AddChild<RightBar>();
 		}
 		public override void Tick()
 		{

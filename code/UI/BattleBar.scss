@@ -3,18 +3,32 @@
 BattleBar {
     background-image: url("ui/BattleBar.png");
     background-repeat: no-repeat;
+    background-position: center top;
     height: 100%;
     width: 100%;
-    
-    .FireButton{
-        background-color:red;
-        width:50px;
-        height:50px;
-        justify-content:center;
-        position:absolute;
-    }
-}
 
-.Screen{
-    justify-content:center;
+
+
+
+    .FireContainer {
+        margin: 0 auto;
+        margin-top: 0.8%;
+        width: 235px;
+        height: 122px;
+    }
+
+    .FireButton {
+        padding: 5px;
+        background-image: url("ui/firebutton.png");
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 100%;
+        //Essentially fills the container with the image when changing screen sizes, thanks Alex <3
+        background-size: cover;
+
+        &:hover {
+            filter: brightness(150%);
+        }
+    }
+
 }

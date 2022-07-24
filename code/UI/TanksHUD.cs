@@ -27,7 +27,6 @@ namespace Tanks
 			// RootPanel.AddChild<GameBar>(); Old Bar
 			RootPanel.AddChild<BattleBar>();
 
-
 			//RootPanel.AddChild<ChatPanel>();
 				
 		}
