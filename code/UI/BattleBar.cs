@@ -14,8 +14,7 @@ namespace Sandbox.UI
 		public Button FireButton { get; set; }
 		public BattleBar()
 		{
-			AddChild<LeftBar>();
-			AddChild<RightBar>();
+
 		}
 		public override void Tick()
 		{

@@ -1,10 +1,12 @@
 ﻿<link rel="stylesheet" href="BattleBar.scss">
 
-<div class="BattleBar">
+<!-- Top Level div will always use the SCSS of the class name. e.g. this one basically is div class="BattleBar"-->
+<div>
         <!-- The @ref is what allows these elements to be picked up by the  class-->
         <!--The names of the ref need to be the same as the properties defined in the  Class-->
+    <div class="LeftContainer"></div>
     <div class="FireContainer">
         <button class="FireButton" @ref="FireButton" onclick="FireAmmo()"></button>
     </div>
-
+    <div class="RightContainer"></div>
 </div>

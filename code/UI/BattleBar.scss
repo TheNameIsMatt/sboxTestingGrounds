@@ -8,8 +8,6 @@ BattleBar {
     width: 100%;
 
 
-
-
     .FireContainer {
         margin: 0 auto;
         margin-top: 0.8%;
@@ -31,4 +29,21 @@ BattleBar {
         }
     }
 
+    .LeftContainer {
+        background-color: blueviolet;
+        width: 580px;
+        height: 180px;
+        top: 1%;
+        left: 10%;
+        position: absolute;
+    }
+
+    .RightContainer {
+        background-color: blue;
+        width: 580px;
+        height: 180px;
+        top: 1%;
+        left: 63%;
+        position: absolute;
+    }
 }
