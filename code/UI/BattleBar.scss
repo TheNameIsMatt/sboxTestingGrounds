@@ -1,12 +1,18 @@
 ﻿@import "Utilities.scss";
 
 BattleBar {
-    background-image: url("ui/BattleBar.png");
-    background-repeat: no-repeat;
-    background-position: center top;
-    height: 100%;
-    width: 100%;
+    margin: 0 auto;
 
+    .MainBar {
+        background: url("ui/BattleBar.png");
+        background-repeat: no-repeat;
+        background-position: center top;
+        //Background-size: contain will ensure that the image stays the same regardless of screen size
+        background-size: contain;
+        margin: 0 auto;
+        height: 100%;
+        width: 100%;
+    }
 
     .FireContainer {
         margin: 0 auto;
@@ -31,19 +37,19 @@ BattleBar {
 
     .LeftContainer {
         background-color: blueviolet;
-        width: 580px;
-        height: 180px;
+        width: 625px;
+        height: 210px;
         top: 1%;
-        left: 10%;
+        left: 5%;
         position: absolute;
     }
 
     .RightContainer {
         background-color: blue;
-        width: 580px;
-        height: 180px;
+        width: 625px;
+        height: 210px;
         top: 1%;
-        left: 63%;
+        left: 65.5%;
         position: absolute;
     }
 }

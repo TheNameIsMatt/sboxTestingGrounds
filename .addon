@@ -2,7 +2,7 @@
   "Title": "Tanks",
   "Type": "game",
   "Org": "pukes",
-  "Ident": "Tanks",
+  "Ident": "tanks",
   "Schema": 1,
   "HasAssets": true,
   "AssetsPath": "/",
@@ -21,7 +21,7 @@
     "RankType": "None",
     "MapSelect": "Hidden",
     "GameNetworkType": "Multiplayer",
-    "MaxPlayers": 0,
+    "MaxPlayers": 1,
     "MinPlayers": 0,
     "Compiler": {
       "RootNamespace": "Sandbox",
