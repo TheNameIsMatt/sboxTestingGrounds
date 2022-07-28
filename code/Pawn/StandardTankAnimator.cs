@@ -22,7 +22,7 @@ namespace Tanks
 			//	Log.Info( "Value from server pawn " + (Pawn as TanksPlayer).PlayerBarrelRotation);
 			//if ( Host.IsClient )
 			//	Log.Info( "Value from client pawn " + (Pawn as TanksPlayer).PlayerBarrelRotation );
-			SetAnimParameter( "BarrelRotation", BarrelRotation );
+			SetAnimParameter( "BarrelRotation", 40f );
 			base.Simulate();
 		}
 
