@@ -73,10 +73,12 @@ namespace Sandbox {
 		{
 			if ( IsClient && Input.Pressed( InputButton.PrimaryAttack) )
 			{
-				var p = new ModelEntity();
+				var p = new Prop();
 				//Resource library goes off of where you saved it in your file structure, as I saved mine in assettypes this is where I call it from.
 				p.SetModel( ResourceLibrary.Get<TankAmmo>( "assettypes/regularmissile.amtype" ).Model);
 				p.Position = GetAttachment("endOfBarrel").Value.Position;
+				p.ApplyLocalAngularImpulse( Vector3.Up * 1000f );
+				p.Velocity = GetAttachment( "endOfBarrel" ).Value.Rotation.Normal.Up * 320f;
 
 			}
 		}
