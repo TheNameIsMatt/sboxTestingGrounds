@@ -3,25 +3,43 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sandbox;
 
 
 namespace Tanks.AmmoTypes
 {
-	public partial class TankWeapon 
+	[GameResource("TankAmmo", "amtype", "Various ammo types that can be purchased and used by the player's tanks")]
+	public partial class TankAmmo : GameResource
 	{
+		public static IReadOnlyList<TankAmmo> All => _all;
+		internal static List<TankAmmo> _all = new();
 
-		public virtual string BombName { get; set; }
+
+		[ResourceType( "vmdl" )]
+		public string Model { get; set; }
+
+		public string BombName { get; set; }
+
+		public float ExplosionRadius { get; set; }
+
+		public  float BombMass { get; set; }
+
+		public int ProjectileCount { get; set; }
+
+		public bool Bounce { get; set; }
+
+		public bool ApplyGravity { get; set; }
 
 
-		// Replaced with a Key Value Pair in the Inventory Class
-		// public virtual int Amount { get; set; }
-		
-		public virtual int ProjectileCount { get; set; }
 
-		public virtual float ExplosionRadius { get; set; }
+		//When Each Asset is loaded automatically upon gamestart it will call this method to add itself to the the read only list
+		protected override void PostLoad()
+		{
+			base.PostLoad();
 
-		public virtual bool Bounce { get; set; }
-
+			if ( !_all.Contains( this ) )
+				_all.Add( this );
+		}
 
 	}
 }

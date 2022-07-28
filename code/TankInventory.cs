@@ -10,7 +10,7 @@ namespace Sandbox
 	public class TankInventory : BaseInventory, IBaseInventory
 	{
 		// BombType and Amount
-		public Dictionary<TankWeapon, int> PlayerAmmo = new Dictionary<TankWeapon, int>();
+		public Dictionary<TankAmmo, int> PlayerAmmo = new Dictionary<TankAmmo, int>();
 
 		public TankInventory( Entity owner ) : base( owner )
 		{

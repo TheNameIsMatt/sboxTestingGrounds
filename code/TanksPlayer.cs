@@ -1,5 +1,6 @@
 using Sandbox;
 using Tanks;
+using Tanks.AmmoTypes;
 using System.Linq;
 
 namespace Sandbox { 
@@ -10,12 +11,12 @@ namespace Sandbox {
 		
 		public float PlayerBarrelRotation;
 
-
 		public TanksPlayer() : base() 
 		{
 			PlayerInventory = new TankInventory(this);
 			SetAnimGraph( "animations/tank.vanmgrph" );
 			PlayerBarrelRotation = 0f;
+			
 		}
 		
 
@@ -68,15 +69,14 @@ namespace Sandbox {
 		}
 
 
-
 		public void SpawnModel()
 		{
-			if ( IsServer && Input.Pressed( InputButton.PrimaryAttack) )
+			if ( IsClient && Input.Pressed( InputButton.PrimaryAttack) )
 			{
-
 				var p = new ModelEntity();
-				p.SetModel( "models/rockets/sboxrocket.vmdl");
-				p.Position = EyePosition + EyeRotation.Forward * 40;
+				//Resource library goes off of where you saved it in your file structure, as I saved mine in assettypes this is where I call it from.
+				p.SetModel( ResourceLibrary.Get<TankAmmo>( "assettypes/regularmissile.amtype" ).Model);
+				p.Position = GetAttachment("endOfBarrel").Value.Position;
 
 			}
 		}
