@@ -7,7 +7,7 @@ using Sandbox;
 using Sandbox.UI;
 using Sandbox.UI.Construct;
 
-namespace Tanks
+namespace Tanks.UI
 {
 	[Library]
 	[UseTemplate]

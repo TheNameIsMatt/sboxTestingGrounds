@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sandbox.UI;
+using Sandbox;
 
-namespace Sandbox.UI
+namespace Tanks.UI
 {
 	[UseTemplate]
 	public class ChatPanel : Panel

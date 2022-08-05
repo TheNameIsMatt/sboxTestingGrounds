@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Tanks.AmmoTypes;
+using Sandbox;
 
-namespace Sandbox
+namespace Tanks
 {
 	public class TankInventory : BaseInventory, IBaseInventory
 	{

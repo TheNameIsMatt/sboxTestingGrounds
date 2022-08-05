@@ -25,7 +25,7 @@ namespace Tanks
 			Rotation = Rotation.FromYaw( 90 );
 		}
 
-		public void SetLookTarget(Entity target )
+		public void SetLookTarget( Entity target )
 		{
 			LookTarget = target;
 		}
@@ -69,7 +69,7 @@ namespace Tanks
 			Viewer = null;
 		}
 
-		private void MoveCamera (Entity pawn )
+		private void MoveCamera( Entity pawn )
 		{
 			var Delta = new Vector3( -Mouse.Delta.x, 0, Mouse.Delta.y );
 			TimeSinceMousePan = 0;

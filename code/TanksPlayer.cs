@@ -3,12 +3,14 @@ using Tanks;
 using Tanks.AmmoTypes;
 using System.Linq;
 
-namespace Sandbox { 
+namespace Tanks { 
 	public partial class TanksPlayer : Player
 	{
 		TankInventory PlayerInventory;
 
-		
+		public Vector3 TankBarrelPostion;
+		public Vector3 TankBarrelRotation;
+
 		public float PlayerBarrelRotation;
 
 		public TanksPlayer() : base() 
@@ -16,6 +18,9 @@ namespace Sandbox {
 			PlayerInventory = new TankInventory(this);
 			SetAnimGraph( "animations/tank.vanmgrph" );
 			PlayerBarrelRotation = 0f;
+
+			// Debug Code
+
 			
 		}
 		
@@ -54,17 +59,14 @@ namespace Sandbox {
 			// Because I create an instance of sandbox player after inheriting from Player I have to call base.similate
 
 			//Within this base class simulate, (player in this case) there is a Lifecheck to see if the pawn is alive, if not they will be respawned after 3 seconds
-			
-			
-			
+			var tankBarrel = GetAttachment( "endOfBarrel" ).Value;
+
+
+
 			// The Input.Pressed (InputButton class is linked to the bindings set in the menu, the .View field is linked to the C key in the bindings
-			//ChangeCamera();
 			SpawnModel();
-			//PrintCursorPosition();
-			//ClickTest();
+			DrawDebugNormals( tankBarrel.Position, (Rotation)tankBarrel.Rotation );
 
-
-			//MoveByPointerPosition();
 			base.Simulate( cl );
 		}
 
@@ -73,19 +75,30 @@ namespace Sandbox {
 		{
 			if ( IsClient && Input.Pressed( InputButton.PrimaryAttack) )
 			{
-				Transform? tankBarrel = GetAttachment( "endOfBarrel" ).Value;
+				var tankBarrel = GetAttachment( "endOfBarrel" ).Value;
+				var barrelBone = GetBoneTransform( "BarrelBone" ).Rotation;
+				Log.Info( "Barrel Bone x: " + barrelBone.x );
+				Log.Info( "Barrel Bone y : " + barrelBone.y );
+				Log.Info( "Barrel Bone z : " + barrelBone.z );
 				var p = new Prop()
 				{
-					Position = tankBarrel.Value.Position,
-					Rotation = Transform.ToLocal(tankBarrel.Value).Rotation
+					Position = tankBarrel.Position,
+					Rotation = new Rotation( 0, barrelBone.y, 0, tankBarrel.Rotation.w / 2 )
 				};
-
 				//Resource library goes off of where you saved it in your file structure, as I saved mine in assettypes this is where I call it from.
 				p.SetModel( ResourceLibrary.Get<TankAmmo>( "assettypes/regularmissile.amtype" ).Model);
-				p.ApplyLocalAngularImpulse( Vector3.Up * 3000f );
-				p.Velocity = GetAttachment( "endOfBarrel" ).Value.Rotation.Normal.Up * 320f;
+				//p.ApplyLocalAngularImpulse( Vector3.Up * 3000f );
+				p.Velocity = GetAttachment( "endOfBarrel" ).Value.Rotation.Forward * 3200f;
 
 			}
+		}
+
+		public void DrawDebugNormals(Vector3 position, Rotation rotation )
+		{
+				//DebugOverlay.Line( position, rotation. * 100f, Color.Red );
+				//DebugOverlay.Line( position, rotation.Right * 100f, Color.Green ) ;
+				//DebugOverlay.Line( position, rotation.Up * 100f, Color.Blue );
+				DebugOverlay.Axis( position, rotation);
 		}
 
 	}

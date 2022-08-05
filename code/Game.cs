@@ -8,11 +8,12 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Tanks;
+using Tanks.UI;
 
 //
 // You don't need to put things in a namespace, but it doesn't hurt.
 //
-namespace Sandbox
+namespace Tanks
 {
 	/// <summary>
 	/// This is your game class. This is an entity that is created serverside when
@@ -22,7 +23,7 @@ namespace Sandbox
 	/// to use for spawned players.
 	/// </summary>
 	/// 
-	[Library("Tanks", Title = "Tanks")]
+	[Library( "Tanks", Title = "Tanks" )]
 	public partial class MyGame : Sandbox.Game
 	{
 		public MyGame()
@@ -37,7 +38,7 @@ namespace Sandbox
 		{
 			ChangePlayerController( cl );
 			base.Simulate( cl );
-			
+
 		}
 		/// <summary>
 		/// A client has joined the server. Make them a pawn to play with
@@ -49,7 +50,7 @@ namespace Sandbox
 			// Create a pawn for this client to play with
 			var player = new TanksPlayer();
 			player.Respawn();
-			
+
 
 			client.Pawn = player;
 
@@ -68,7 +69,7 @@ namespace Sandbox
 			}
 
 		}
-		public void ChangePlayerController(Client cl)
+		public void ChangePlayerController( Client cl )
 		{
 			if ( cl.Pawn is TanksPlayer theirPlayer )
 			{

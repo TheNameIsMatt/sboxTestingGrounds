@@ -2,8 +2,10 @@
 using Tanks;
 using Tanks.Utils;
 using System;
+using Sandbox.UI;
 
-namespace Sandbox.UI
+
+namespace Tanks.UI
 {
 	//Attaches html and css automatically with this attribute
 	[UseTemplate]
