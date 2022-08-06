@@ -3,7 +3,8 @@ using Tanks;
 using Tanks.AmmoTypes;
 using System.Linq;
 
-namespace Tanks { 
+namespace Tanks
+{
 	public partial class TanksPlayer : Player
 	{
 		TankInventory PlayerInventory;
@@ -13,23 +14,23 @@ namespace Tanks {
 
 		public float PlayerBarrelRotation;
 
-		public TanksPlayer() : base() 
+		public TanksPlayer() : base()
 		{
-			PlayerInventory = new TankInventory(this);
+			PlayerInventory = new TankInventory( this );
 			SetAnimGraph( "animations/tank.vanmgrph" );
 			PlayerBarrelRotation = 0f;
 
 			// Debug Code
 
-			
+
 		}
-		
+
 
 
 
 		public override void Respawn()
 		{
-			
+
 			SetModel( "models/Tankv1/tank.vmdl" );
 
 			//Because it inherits these controllers and animators you can just call Controller rather than this.controller
@@ -37,14 +38,14 @@ namespace Tanks {
 
 			Animator = new StandardTankAnimator();
 
-			CameraMode = new ThirdPersonCamera();
+			CameraMode = new Camera();
 
 
 			if ( DevController is NoclipController )
 			{
 				DevController = null;
 			}
-	
+
 			EnableAllCollisions = true;
 			EnableDrawing = true;
 			EnableHideInFirstPerson = true;
@@ -73,32 +74,35 @@ namespace Tanks {
 
 		public void SpawnModel()
 		{
-			if ( IsClient && Input.Pressed( InputButton.PrimaryAttack) )
+			if ( IsClient && Input.Pressed( InputButton.PrimaryAttack ) )
 			{
 				var tankBarrel = GetAttachment( "endOfBarrel" ).Value;
 				var barrelBone = GetBoneTransform( "BarrelBone" ).Rotation;
-				Log.Info( "Barrel Bone x: " + barrelBone.x );
-				Log.Info( "Barrel Bone y : " + barrelBone.y );
-				Log.Info( "Barrel Bone z : " + barrelBone.z );
+
 				var p = new Prop()
 				{
 					Position = tankBarrel.Position,
-					Rotation = new Rotation( 0, barrelBone.y, 0, tankBarrel.Rotation.w / 2 )
+					Rotation = GetAttachment( "endOfBarrel" ).Value.Rotation
 				};
 				//Resource library goes off of where you saved it in your file structure, as I saved mine in assettypes this is where I call it from.
-				p.SetModel( ResourceLibrary.Get<TankAmmo>( "assettypes/regularmissile.amtype" ).Model);
-				//p.ApplyLocalAngularImpulse( Vector3.Up * 3000f );
-				p.Velocity = GetAttachment( "endOfBarrel" ).Value.Rotation.Forward * 3200f;
+				p.SetModel( ResourceLibrary.Get<TankAmmo>( "assettypes/regularmissile.amtype" ).Model );
+
+				//
+				//
+				// Need to update it so Props Rotation.Up faces the same direction as the attachments Rotaiton.left
+				//
+				//
+				p.Velocity = GetAttachment( "endOfBarrel" ).Value.Rotation.Left * 320f;
 
 			}
 		}
 
-		public void DrawDebugNormals(Vector3 position, Rotation rotation )
+		public void DrawDebugNormals( Vector3 position, Rotation rotation )
 		{
-				//DebugOverlay.Line( position, rotation. * 100f, Color.Red );
-				//DebugOverlay.Line( position, rotation.Right * 100f, Color.Green ) ;
-				//DebugOverlay.Line( position, rotation.Up * 100f, Color.Blue );
-				DebugOverlay.Axis( position, rotation);
+			//DebugOverlay.Line( position, rotation. * 100f, Color.Red );
+			//DebugOverlay.Line( position, rotation.Right * 100f, Color.Green ) ;
+			//DebugOverlay.Line( position, rotation.Up * 100f, Color.Blue );
+			DebugOverlay.Axis( position, rotation );
 		}
 
 	}

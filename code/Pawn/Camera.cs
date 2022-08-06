@@ -1,88 +1,91 @@
 ﻿using Sandbox;
-using Tanks.Utils;
+using System.Linq;
 
-namespace Tanks
+namespace Tanks;
+
+public class Camera : Sandbox.CameraMode
 {
-	// https://github.com/apetavern/sbox-grubs/blob/master/code/Pawn/Camera.cs
-	public class Camera : Sandbox.CameraMode
+	public float Distance { get; set; } = 1024;
+	public float DistanceScrollRate { get; set; } = 32f;
+	public float MinDistance { get; set; } = 128f;
+	public float MaxDistance { get; set; } = 2048f;
+
+	private float LerpSpeed { get; set; } = 5f;
+	private bool CenterOnPawn { get; set; } = true;
+	private Vector3 Center { get; set; }
+	private float CameraUpOffset { get; set; } = 32f;
+
+	private TimeSince TimeSinceMousePan { get; set; }
+	private static int SecondsBeforeReturnFromPan => 3;
+
+	public Entity Target { get; set; }
+
+	public override void Update()
 	{
-		public Range DistanceRange { get; } = new Range( 128f, 2048f );
-		public float Distance { get; set; } = 1024f;
-		private float DistanceScrollRate => 32f;
-
-		private TimeSince TimeSinceMousePan { get; set; }
-		private int SecondsBeforeReturnFromPan => 3;
-
-		private bool CenterOnPawn { get; set; } = true;
-
-		public Vector3 Center { get; set; }
-
-		protected Entity LookTarget { get; private set; }
-
-		public override void Activated()
+		if (Target == null )
 		{
-			Position = Vector3.Right * Distance;
-			Rotation = Rotation.FromYaw( 90 );
+			Target = FindTargetEntity();
+		}
+		
+
+		Distance -= Input.MouseWheel * DistanceScrollRate;
+		Distance = Distance.Clamp( MinDistance, MaxDistance );
+
+		// Get the center position, plus move the camera up a little bit.
+		var cameraCenter = (CenterOnPawn) ? Target.Position : Center;
+		cameraCenter += Vector3.Up * CameraUpOffset;
+
+		var targetPosition = cameraCenter + Vector3.Right * Distance;
+		Position = Position.LerpTo( targetPosition, Time.Delta * LerpSpeed );
+
+		var lookDir = (cameraCenter - targetPosition).Normal;
+		Rotation = Rotation.LookAt( lookDir, Vector3.Up );
+
+		// Handle camera panning
+		if ( Input.Down( InputButton.SecondaryAttack ) )
+			MoveCamera();
+
+		// Check the last time we panned the camera, update CenterOnPawn if greater than N.
+		if ( !Input.Down( InputButton.SecondaryAttack ) && TimeSinceMousePan > SecondsBeforeReturnFromPan )
+			CenterOnPawn = true;
+	}
+
+	private void MoveCamera()
+	{
+		var delta = new Vector3( -Mouse.Delta.x, 0, Mouse.Delta.y ) * 2;
+		TimeSinceMousePan = 0;
+
+		if ( CenterOnPawn )
+		{
+			Center = Target.Position;
+
+			// Check if we've moved the camera, don't center on the pawn if we have
+			if ( !delta.LengthSquared.AlmostEqual( 0, 0.1f ) )
+				CenterOnPawn = false;
 		}
 
-		public void SetLookTarget( Entity target )
+		Center += delta;
+	}
+
+	private AnimatedEntity FindTargetEntity()
+	{
+		var localPawn = Local.Pawn;
+
+		if ( localPawn is Player character )
 		{
-			LookTarget = target;
+			return character;
 		}
-
-		public override void Update()
+		else
 		{
-			var pawn = LookTarget;
+			var target = Client.All.Select( x => x.Pawn as TanksPlayer )
+				.FirstOrDefault();
 
-			if ( pawn == null )
-				return;
-
-			// Distance Scrolling
-			Distance += -Input.MouseWheel * DistanceScrollRate;
-			Distance = DistanceRange.Clamp( Distance );
-
-			// If we havent moved the camera, center it on the pawn;
-
-			Vector3 cameraCenter = (CenterOnPawn) ? pawn.Position : Center;
-
-
-			// Lerp to our target position
-			Vector3 targetPosition = cameraCenter + Vector3.Right * Distance;
-			Position = Position.LerpTo( targetPosition, 5 * Time.Delta );
-
-			// Rotate towards the target position
-			Vector3 lookDir = (cameraCenter + Vector3.Right) * Distance;
-			Rotation = Rotation.LookAt( lookDir, Vector3.Up );
-
-			if ( Input.Down( InputButton.SecondaryAttack ) )
-				MoveCamera( pawn );
-
-			if ( !Input.Down( InputButton.SecondaryAttack ) && TimeSinceMousePan > SecondsBeforeReturnFromPan )
-				CenterOnPawn = true;
-
-
-			//
-			// Camera Properties
-			FieldOfView = 65;
-			ZNear = 8;
-			ZFar = 25000;
-			Viewer = null;
-		}
-
-		private void MoveCamera( Entity pawn )
-		{
-			var Delta = new Vector3( -Mouse.Delta.x, 0, Mouse.Delta.y );
-			TimeSinceMousePan = 0;
-
-			if ( CenterOnPawn )
+			if ( target.IsValid() )
 			{
-				Center = pawn.Position;
-
-				if ( !Delta.LengthSquared.AlmostEqual( 0, 0.1f ) )
-					CenterOnPawn = false;
+				return target;
 			}
-
-			Center += Delta;
 		}
+
+		return null;
 	}
 }

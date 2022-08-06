@@ -39,8 +39,8 @@ BattleBar {
         background-color: blueviolet;
         width: 625px;
         height: 210px;
-        top: 1%;
-        left: 5%;
+        top: 10px;
+        left: 10px;
         position: absolute;
     }
 
@@ -48,8 +48,8 @@ BattleBar {
         background-color: blue;
         width: 625px;
         height: 210px;
-        top: 1%;
-        left: 65.5%;
+        top: 10px;
+        right: 10px;
         position: absolute;
     }
 }
